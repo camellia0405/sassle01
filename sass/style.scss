@@ -1,0 +1,285 @@
+@import"../sass/variables/mixin";
+
+*,*::before,*::after{
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+    @include media(sp){
+        font-size: 52.5%;;
+    }
+}
+
+body{
+    font-size: 1.6em;
+}
+
+a{
+    font-size: 1.5rem;
+    text-decoration: none;
+}
+
+header{
+    width: 100%;
+    height: 20rem;
+    background-color: lightcoral;
+    .header_topmenu{
+        width: 100%;
+        padding-top: 2rem;
+        display: flex;
+        justify-content:space-around;
+        @include media(sp){
+            display: none;
+        }
+        &_right{
+            max-width: 400px;
+            margin-left: auto;
+        }
+
+        &_center{
+            width: 80%;
+            margin: 0 auto;
+            position:relative;
+            top:10px;
+            left:0%;
+        }
+        
+        &_search{
+            width: 10rem;
+            border: solid 2px black;
+            text-align: center;
+            padding: 0.5rem;
+        }
+
+        &_login{
+            width: 10rem;
+            text-align: center;
+            padding: 0.5rem;
+        }
+
+        &_account{
+            width: 10rem;
+            text-align: center;
+            padding: 0.5rem;
+        }
+        
+        &_list_box{
+            width: 90%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-around;
+            .menu_list_button{
+                a{
+                    text-align:center;
+                    height: 100px;
+                    line-height:100px;
+                }
+                img{
+                    width: 15rem;
+                }
+            }
+        }
+    }
+}
+
+.header_hamburger{
+    display: block;
+    .hamburger_menu{
+        display: block;
+        width: 50px;
+        height: 50px;
+        background-color: pink;
+        position: fixed;
+        top: 0;
+        right: 0;
+        div{
+            height: 1px;
+            width: 60%;
+            background-color: white;
+            position: absolute;
+            //通常position: relativeとセットで使われることが多いが、親要素にfixedを使っていれば同様に使える。このDIVの親要素は、hamburger_menu
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            transition: .3s;
+            &:nth-of-type(1){
+                transform: translate(-50%,-10px);
+            }
+            &:nth-of-type(3){
+                transform: translate(-50%,10px);
+            }
+        }
+        &.active{
+            div{
+                &:nth-of-type(1){
+                    transform: rotate(45deg);
+                }
+                &:nth-of-type(2){
+                opacity: 0;
+                }
+
+                &:nth-of-type(3){
+
+            }
+        }
+    
+        }
+    }
+}
+
+main{
+    max-width: 980px;
+    margin: 0 auto;
+}
+
+
+.main_visual{
+    width: 100%;
+
+    &_image{
+        width: 100%;
+        img{
+            width: 100%;
+            vertical-align: top;
+        }
+    }
+}
+
+.main_menulist{
+    display: flex;
+    height: 5rem;
+    line-height:5rem;
+    &_bread a{
+        font-size: 0.8rem;
+        &::after{
+            content: ">";
+            width: 1rem;
+            height: 1rem;
+            margin-left: 0.5rem;
+            margin-right: 0.5rem;
+        }
+    }
+}
+
+
+.main_teamenu{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content:space-between;
+    &_contentbox{
+        width: 30rem;
+        background-color:lightyellow;
+        margin: 0 auto;
+        &_image{
+            width: 100%;
+            img{
+                width: 100%;
+            }
+
+        }
+    }
+}
+
+.main_link{
+    width: 60%;
+    margin: 0 auto;
+    margin-top: 25px;
+    display: flex;
+    justify-content:center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    .main_link_button{
+        width: 25rem;
+        height: 5rem;
+        line-height:5rem;
+        background-color:darksalmon;
+        border: solid 2px black;
+        margin: 5px;
+        .main_link_txte{
+            text-align: center;
+        }
+    }
+}
+
+.main_map{
+    width: 100%;
+    background-color: lightyellow;
+    display: flex;
+    margin: 0 auto;
+    margin-top: 5rem;
+    
+    @include media(sp){
+        flex-direction: column;
+        }
+    &_map{
+        width: 30rem;
+        height: 30rem;
+        background-color: brown;
+        margin: 0 auto;
+        @include media(sp){
+            width: 100%;
+            }
+    }
+    &_text{
+        width: 30rem;
+        height: 30rem;
+        padding: 2rem;
+        margin: 0 auto;
+        @include media(sp){
+            width: 100%;
+            }
+        h2{
+            font-size: 2rem;
+
+        }
+
+        p{
+            font-size: 1.5rem;
+            margin-top: 2rem;
+        }
+    }
+}
+
+footer{
+    width: 100%;
+    padding: 3rem;
+    background-color: lightcoral;
+    color: white;
+    .footer_menutop{
+        width: 100%;
+        margin-bottom: 1.5rem;
+        display: flex;
+        justify-content: space-around;
+    }
+    .footer_menutop_logo{
+        width: 12rem;
+        height: 7rem;
+        img{
+            width: 10rem;
+            height: 7rem;
+        }
+    }
+    .footer_menutop_contents{
+        width: 10rem;
+        height: 7rem;
+        @include media(sp){
+            h2,p{
+                font-size: 0.2em;
+                text-align: center;
+            }
+        }
+    }
+    .footer_menubottom{
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        @include media(sp){
+            p{
+                font-size: 0.5rem;
+            }
+        }
+        }
+    }
