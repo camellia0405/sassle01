@@ -90,7 +90,13 @@ header .header_topmenu_list_box .menu_list_button img {
 }
 
 .header_hamburger {
-  display: block;
+  display: none;
+}
+
+@media screen and (max-width: 767px) {
+  .header_hamburger {
+    display: block;
+  }
 }
 
 .header_hamburger .hamburger_menu {
@@ -111,23 +117,65 @@ header .header_topmenu_list_box .menu_list_button img {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  transition: .3s;
+  transition: 0.3s;
 }
 
 .header_hamburger .hamburger_menu div:nth-of-type(1) {
   transform: translate(-50%, -10px);
+  transform-origin: 0% 50%;
 }
 
 .header_hamburger .hamburger_menu div:nth-of-type(3) {
   transform: translate(-50%, 10px);
+  transform-origin: 0% 50%;
+}
+
+.header_hamburger .hamburger_menu_list nav {
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.3s;
+}
+
+.header_hamburger .hamburger_menu_list nav ol {
+  width: 100%;
+  position: fixed;
+  top: 53px;
+  background-color: white;
+  opacity: 0.8;
+  text-align: center;
+  padding: 5px;
+}
+
+.header_hamburger .hamburger_menu_list nav ol .menu_list_button {
+  height: 3rem;
+  line-height: 3rem;
+}
+
+.header_hamburger .hamburger_menu_list nav ol .menu_list_button:hover {
+  background-color: pink;
+}
+
+.header_hamburger .hamburger_menu_list nav ol .menu_list_button:hover a {
+  color: white;
+}
+
+.header_hamburger .hamburger_menu_list nav.active {
+  opacity: 1;
+  visibility: visible;
 }
 
 .header_hamburger .hamburger_menu.active div:nth-of-type(1) {
-  transform: rotate(45deg);
+  transform: rotate(45deg) translate(-50%, 0px);
+  transform-origin: 0% 50%;
 }
 
 .header_hamburger .hamburger_menu.active div:nth-of-type(2) {
   opacity: 0;
+}
+
+.header_hamburger .hamburger_menu.active div:nth-of-type(3) {
+  transform: rotate(-45deg) translate(-50%, 0px);
+  transform-origin: 0% 50%;
 }
 
 main {
@@ -209,6 +257,11 @@ main {
 
 .main_link .main_link_button .main_link_txte {
   text-align: center;
+}
+
+.main_link .main_link_button .main_link_txte .fa-solid fa-angle-right {
+  font-size: 100px;
+  color: #00acee;
 }
 
 .main_map {

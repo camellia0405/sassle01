@@ -84,7 +84,12 @@ header{
 }
 
 .header_hamburger{
-    display: block;
+    display: none;
+    @include media(sp){
+
+        display: block;
+    }
+
     .hamburger_menu{
         display: block;
         width: 50px;
@@ -102,26 +107,65 @@ header{
             top: 50%;
             left: 50%;
             transform: translate(-50%,-50%);
-            transition: .3s;
-            &:nth-of-type(1){
-                transform: translate(-50%,-10px);
+            transition: 0.3s;
+                &:nth-of-type(1){
+                    transform: translate(-50%,-10px);
+                    transform-origin: 0% 50%;//×になるときにかくつくのを防ぐ//
+                }
+                &:nth-of-type(3){
+                    transform: translate(-50%,10px);
+                    transform-origin: 0% 50%;
+                }
+        }
+        &_list{
+            nav{
+                opacity: 0;
+                visibility: hidden;
+                transition: 0.3s;
+                ol{
+                    width: 100%;
+                    position: fixed;
+                    top:53px;
+                    background-color: white;
+                    opacity: 0.8;
+                    text-align: center;
+                    padding: 5px;
+                    .menu_list_button{
+                        height: 3rem;
+                        line-height:3rem;
+                        &:hover{
+                            background-color: pink;
+                            a{
+                                color: white;
+                            }
+                        }
+                    }
+                }
+                &.active{
+                    opacity: 1;
+                    visibility: visible;
+                }
+
             }
-            &:nth-of-type(3){
-                transform: translate(-50%,10px);
-            }
+
+
         }
         &.active{
             div{
                 &:nth-of-type(1){
-                    transform: rotate(45deg);
+                    transform: rotate(45deg) translate(-50%,0px);
+                    //rotateは、DIVの真ん中を中心に回転している//
+                    //translateのY軸を0pxにすると綺麗な×になる//
+                    transform-origin: 0% 50%;
                 }
                 &:nth-of-type(2){
                 opacity: 0;
                 }
 
                 &:nth-of-type(3){
-
-            }
+                    transform: rotate(-45deg) translate(-50%,0px);
+                    transform-origin: 0% 50%;
+                }
         }
     
         }
@@ -200,6 +244,10 @@ main{
         margin: 5px;
         .main_link_txte{
             text-align: center;
+            .fa-solid fa-angle-right{
+                font-size: 100px;
+                color: #00acee;
+            }
         }
     }
 }
